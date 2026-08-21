@@ -39,3 +39,42 @@ export interface WeatherCurrentResponse {
   timezone?: number;
   name: string;
 }
+
+export interface DailyTemp {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface DailyFeelsLike {
+  day: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface DailyItem {
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  temp: DailyTemp;
+  feels_like: DailyFeelsLike;
+  pressure: number;
+  humidity: number;
+  wind_speed: number;
+  wind_deg: number;
+  weather: WeatherCondition[];
+  clouds: number;
+  pop?: number;
+}
+
+export interface OneCallDailyResponse {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
+  daily: DailyItem[];
+}

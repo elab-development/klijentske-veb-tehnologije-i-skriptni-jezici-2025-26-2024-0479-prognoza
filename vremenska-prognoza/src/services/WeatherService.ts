@@ -1,4 +1,9 @@
-import type { Units, WeatherCurrentResponse } from '../types/weather';
+import type {
+  OneCallDailyResponse,
+  Units,
+  WeatherCurrentResponse,
+} from '../types/weather';
+
 export class WeatherService {
   static key = import.meta.env.VITE_OWM_API_KEY as string;
 
@@ -16,6 +21,29 @@ export class WeatherService {
       appid: this.key,
     });
     const url = `https://api.openweathermap.org/data/2.5/weather?${params.toString()}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(
+        `OpenWeather error (${res.status}): ${text || res.statusText}`
+      );
+    }
+    return res.json();
+  }
+
+  static async weekly(
+    lat: number,
+    lon: number,
+    units: Units = 'metric'
+  ): Promise<OneCallDailyResponse> {
+    const params = new URLSearchParams({
+      lat: String(lat),
+      lon: String(lon),
+      exclude: 'minutely,hourly,current,alerts',
+      units,
+      appid: this.key,
+    });
+    const url = `https://api.openweathermap.org/data/3.0/onecall?${params.toString()}`;
     const res = await fetch(url);
     if (!res.ok) {
       const text = await res.text().catch(() => '');
