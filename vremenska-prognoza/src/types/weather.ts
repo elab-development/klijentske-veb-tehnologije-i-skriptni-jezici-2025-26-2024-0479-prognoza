@@ -104,3 +104,28 @@ export interface OneCallCurrentResponse {
   timezone_offset: number;
   current: OneCallCurrent;
 }
+
+export interface HourlyItem {
+  dt: number;
+  temp: number;
+  feels_like: number;
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  uvi?: number;
+  clouds: number;
+  visibility?: number;
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust?: number;
+  pop?: number;
+  weather: WeatherCondition[];
+}
+
+export interface OneCallHourlyResponse {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
+  hourly: HourlyItem[];
+}

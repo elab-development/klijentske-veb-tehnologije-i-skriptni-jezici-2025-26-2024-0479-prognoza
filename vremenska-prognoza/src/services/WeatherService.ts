@@ -1,6 +1,7 @@
 import type {
   OneCallCurrentResponse,
   OneCallDailyResponse,
+  OneCallHourlyResponse,
   Units,
   WeatherCurrentResponse,
 } from '../types/weather';
@@ -64,6 +65,29 @@ export class WeatherService {
       lat: String(lat),
       lon: String(lon),
       exclude: 'minutely,hourly,daily,alerts',
+      units,
+      appid: this.key,
+    });
+    const url = `https://api.openweathermap.org/data/3.0/onecall?${params.toString()}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(
+        `OpenWeather error (${res.status}): ${text || res.statusText}`
+      );
+    }
+    return res.json();
+  }
+
+  static async hourly(
+    lat: number,
+    lon: number,
+    units: Units = 'metric'
+  ): Promise<OneCallHourlyResponse> {
+    const params = new URLSearchParams({
+      lat: String(lat),
+      lon: String(lon),
+      exclude: 'current,minutely,daily,alerts',
       units,
       appid: this.key,
     });
