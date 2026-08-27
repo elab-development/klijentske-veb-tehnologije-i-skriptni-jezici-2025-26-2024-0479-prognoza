@@ -1,7 +1,10 @@
+import { MapPin, Clock } from 'lucide-react';
+
 import { useLocationStore } from '../store/location';
 import { useHourlyWeather } from '../hooks/useHourlyWeather';
-import { AlertTriangle, MapPin, Clock } from 'lucide-react';
 import HourCard from '../components/weather/HourCard';
+import Loading from '../components/info/Loading';
+import AlertCard from '../components/info/AlertCard';
 
 export default function Hourly() {
   const { location } = useLocationStore();
@@ -15,23 +18,13 @@ export default function Hourly() {
   if (!location) {
     return (
       <div className='max-w-4xl mx-auto'>
-        <div className='rounded-3xl bg-blue-50 ring-1 ring-blue-100 p-6 md:p-8'>
-          <div className='flex items-start gap-3'>
-            <AlertTriangle className='text-blue-600 mt-0.5' />
-            <div>
-              <h2 className='text-xl font-semibold text-slate-900'>
-                No location set
-              </h2>
-              <p className='text-slate-600 mt-1'>
-                Go to{' '}
-                <a href='/' className='text-blue-700 underline'>
-                  Home
-                </a>{' '}
-                and pick a location to see the hourly forecast.
-              </p>
-            </div>
-          </div>
-        </div>
+        <AlertCard variant='info' title='No location set'>
+          Go to{' '}
+          <a href='/' className='text-orange-700 underline'>
+            Home
+          </a>{' '}
+          and pick a location to see the hourly forecast.
+        </AlertCard>
       </div>
     );
   }
@@ -39,19 +32,7 @@ export default function Hourly() {
   if (loading) {
     return (
       <div className='max-w-5xl mx-auto'>
-        <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
-          <div className='animate-pulse space-y-4'>
-            <div className='h-6 w-1/3 bg-slate-200 rounded' />
-            <div className='flex gap-4 overflow-x-auto'>
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className='h-36 w-40 rounded-2xl bg-blue-50/60 ring-1 ring-blue-100'
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <Loading lines={6} />
       </div>
     );
   }
@@ -59,17 +40,9 @@ export default function Hourly() {
   if (error || !data) {
     return (
       <div className='max-w-4xl mx-auto'>
-        <div className='rounded-3xl bg-white shadow-xl ring-1 ring-red-100 p-6 md:p-8'>
-          <div className='flex items-start gap-3'>
-            <AlertTriangle className='text-red-600 mt-0.5' />
-            <div>
-              <h2 className='text-xl font-semibold text-slate-900'>
-                Couldn’t load hourly forecast
-              </h2>
-              <p className='text-slate-600 mt-1'>{error || 'Unknown error'}</p>
-            </div>
-          </div>
-        </div>
+        <AlertCard variant='error' title='Couldn’t load hourly forecast'>
+          {error || 'Unknown error'}
+        </AlertCard>
       </div>
     );
   }
@@ -79,15 +52,15 @@ export default function Hourly() {
 
   return (
     <div className='max-w-5xl mx-auto'>
-      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
+      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
-            <MapPin size={18} className='text-blue-600' />
+            <MapPin size={18} className='text-orange-600' />
             <h2 className='text-xl md:text-2xl font-bold text-slate-900'>
               {location.label || 'Hourly forecast'}
             </h2>
           </div>
-          <Clock className='text-blue-600' />
+          <Clock className='text-orange-600' />
         </div>
 
         <div className='mt-6 flex gap-4 overflow-x-auto pb-2'>
