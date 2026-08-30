@@ -40,7 +40,7 @@ export default function Details() {
       <div className='max-w-4xl mx-auto'>
         <AlertCard variant='info' title='No location set'>
           Go to{' '}
-          <a href='/' className='text-orange-700 underline'>
+          <a href='/' className='text-blue-700 underline'>
             Home
           </a>{' '}
           and pick a location to see details.
@@ -107,7 +107,7 @@ export default function Details() {
             label='Feels like'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Thermometer size={16} className='text-orange-600' />
+                <Thermometer size={16} className='text-blue-600' />
                 {Math.round(cur.feels_like)}°C
               </span>
             }
@@ -116,7 +116,7 @@ export default function Details() {
             label='Humidity'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Droplets size={16} className='text-orange-600' />
+                <Droplets size={16} className='text-blue-600' />
                 {cur.humidity}%
               </span>
             }
@@ -125,7 +125,7 @@ export default function Details() {
             label='Pressure'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Gauge size={16} className='text-orange-600' />
+                <Gauge size={16} className='text-blue-600' />
                 {cur.pressure} hPa
               </span>
             }
@@ -134,7 +134,7 @@ export default function Details() {
             label='Visibility'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Eye size={16} className='text-orange-600' />
+                <Eye size={16} className='text-blue-600' />
                 {cur.visibility != null
                   ? `${Math.round(cur.visibility / 1000)} km`
                   : '—'}
@@ -146,7 +146,7 @@ export default function Details() {
             label='Wind speed'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Wind size={16} className='text-orange-600' />
+                <Wind size={16} className='text-blue-600' />
                 {Math.round(cur.wind_speed)} m/s
               </span>
             }
@@ -167,7 +167,7 @@ export default function Details() {
             label='Cloudiness'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Cloud size={16} className='text-orange-600' />
+                <Cloud size={16} className='text-blue-600' />
                 {cur.clouds}%
               </span>
             }
@@ -182,7 +182,7 @@ export default function Details() {
             label='Sunrise'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Sunrise size={16} className='text-orange-600' />
+                <Sunrise size={16} className='text-blue-600' />
                 {fmtTime(cur.sunrise, tz)}
               </span>
             }
@@ -191,7 +191,7 @@ export default function Details() {
             label='Sunset'
             value={
               <span className='inline-flex items-center gap-1'>
-                <Sunset size={16} className='text-orange-600' />
+                <Sunset size={16} className='text-blue-600' />
                 {fmtTime(cur.sunset, tz)}
               </span>
             }

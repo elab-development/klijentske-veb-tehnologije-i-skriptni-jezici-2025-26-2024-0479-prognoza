@@ -1,75 +1,76 @@
-# React + TypeScript + Vite
+# klijentske-veb-tehnologije-2025-26-2024-0479-vremenska-prognoza
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Veb aplikacija za praćenje vremenskih uslova i prognoze u realnom vremenu. Projekat je razvijen korišćenjem React biblioteke sa TypeScript tipizacijom i Vite alatom, dok je za moderan dizajn i stilizaciju upotrebljen Tailwind CSS.
 
-Currently, two official plugins are available:
+## Funkcionalnosti
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Izbor lokacije**
 
-## React Compiler
+Omogućava korisniku odabir željene lokacije na tri načina: direktnim klikom na Google mapu, unosom u polje za pretragu ili automatskim detektovanjem trenutne pozicije (geolokacija). Izabrana lokacija se čuva u globalnom stanju (Zustand) i sinhronizuje sa localStorage-om.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Trenutna prognoza (Current)**  
 
-## Expanding the ESLint configuration
+Prikaz aktuelnih meteoroloških podataka (temperatura, subjektivni osećaj, vlažnost vazduha i opis vremenskog stanja) koji se preuzimaju putem OpenWeather API-ja.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Nedeljna prognoza (Weekly)**  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Kartični prikaz vremenskih uslova za narednih 7 dana uz detalje o minimalnim i maksimalnim temperaturama, padavinama, brzini vetra i vlažnosti (korišćenjem OpenWeather One Call API-ja).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Prognoza po satima (Hourly)**  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Horizontalni vremenski prikaz (timeline) sa prognozom za naredna 24 sata koji uključuje temperaturu, padavine i odgovarajuće ikone meteoroloških uslova
 
-```
+- **Detalji (Details)**  
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Poseban pregled dodatnih parametara kao što su atmosferski pritisak, UV indeks, vidljivost, tačka rose, oblačnost, smer i brzina vetra, kao i vreme izlaska i zalaska sunca.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Komponente**  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Aplikacija je građena modularno uz odvojene komponente za kartice (WeatherDayCard, HourCard), statistiku (StatItem) i sistemska obaveštenja (AlertCard, InfoNote).
 
-```
+## Korišćene tehnologije i biblioteke
+
+- **React + TypeScript** za interfejs i tipizaciju
+- **Vite** za brzi build i development server
+- **TailwindCSS** za stilizaciju i responzivni dizajn
+- **React Router** za višestruke stranice (Home, Current, Weekly, Hourly, Details)
+- **Zustand** za upravljanje globalnim stanjem (izabrana lokacija)
+- **@react-google-maps/api** za prikaz mape i pretragu lokacije
+- **lucide-react** za moderne ikone
+- **OpenWeather API** za vremenske podatke (Current + One Call)
+
+## Stranice
+
+- / – Home (izbor lokacije)
+- /current – Trenutna prognoza
+- /weekly – Nedeljna prognoza
+- /hourly – Prognoza po satima
+- /details – Detaljni parametri vremenskih uslova
+
+## Pokretanje aplikacije lokalno
+
+1. Kloniraj repozitorijum:
+   ```bash
+   git clone https://github.com/elab-development/klijentske-veb-tehnologije-i-skriptni-jezici-2025-26-2024-0479-prognoza.git
+   
+   cd vremenska-prognoza
+   ```
+2. Instaliraj dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Kreiraj .env fajl u root direktorijumu i dodaj svoje API ključeve:
+   VITE_GOOGLE_MAPS_API_KEY=YOUR_GOOGLE_MAPS_KEY
+   VITE_OWM_API_KEY=YOUR_OPENWEATHER_KEY
+
+4. Pokreni aplikaciju:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Otvori u pretraživaču:
+   http://localhost:5173

@@ -29,7 +29,7 @@ export default function WeatherDayCard({ day, tzOffset }: Props) {
           <img
             src={icon}
             alt={cond?.description || 'weather'}
-            className='h-14 w-14 rounded-xl bg-[#f2f2f5] ring-1 ring-blue-100 p-1'
+            className='h-14 w-14 rounded-xl bg-white/70 ring-1 ring-blue-100 p-1'
             loading='lazy'
           />
         )}
