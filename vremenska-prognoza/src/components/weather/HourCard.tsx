@@ -20,7 +20,7 @@ export default function HourCard({ hour, tzOffset }: Props) {
   const popPct = Math.round((hour.pop ?? 0) * 100);
 
   return (
-    <div className='min-w-[160px] rounded-2xl p-4 ring-1 ring-orange-100 bg-orange-50/60'>
+    <div className='min-w-[160px] rounded-2xl p-4 ring-1 ring-blue-100 bg-blue-50/60'>
       <div className='text-xs text-slate-600'>
         {formatHour(hour.dt, tzOffset)}
       </div>

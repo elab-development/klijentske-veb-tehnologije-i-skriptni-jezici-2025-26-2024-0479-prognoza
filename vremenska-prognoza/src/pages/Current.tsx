@@ -20,7 +20,7 @@ export default function Current() {
       <div className='max-w-3xl mx-auto'>
         <AlertCard variant='info' title='No location set'>
           Go to{' '}
-          <a href='/' className='text-orange-700 underline'>
+          <a href='/' className='text-blue-700 underline'>
             Home
           </a>{' '}
           and pick a location to see current weather.
@@ -57,15 +57,15 @@ export default function Current() {
 
   return (
     <div className='max-w-3xl mx-auto'>
-      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
+      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
-            <MapPin size={18} className='text-orange-600' />
+            <MapPin size={18} className='text-[#272745]' />
             <h2 className='text-xl md:text-2xl font-bold text-slate-900'>
               {locLabel}
             </h2>
           </div>
-          <ThermometerSun className='text-orange-600' />
+          <ThermometerSun className='text-[#272745]' />
         </div>
 
         <div className='mt-4 flex items-center gap-6'>
@@ -73,11 +73,11 @@ export default function Current() {
             <img
               src={iconUrl}
               alt={cond?.description || 'weather icon'}
-              className='h-28 w-28 rounded-2xl bg-white ring-1 ring-orange-100 p-2'
+              className='h-28 w-28 rounded-2xl bg-white ring-1 ring-blue-100 p-2'
               loading='eager'
             />
           ) : (
-            <div className='h-28 w-28 rounded-2xl bg-orange-50 ring-1 ring-orange-100' />
+            <div className='h-28 w-28 rounded-2xl bg-blue-50 ring-1 ring-blue-100' />
           )}
 
           <div>
@@ -89,11 +89,11 @@ export default function Current() {
         </div>
 
         <div className='mt-6 grid grid-cols-2 gap-4 text-sm text-slate-600'>
-          <div className='rounded-xl bg-orange-50/60 ring-1 ring-orange-100 p-3'>
+          <div className='rounded-xl bg-blue-50/60 ring-1 ring-blue-100 p-3'>
             <span className='font-semibold text-slate-900'>Feels like:</span>{' '}
             {Math.round(data?.main?.feels_like ?? NaN)}°C
           </div>
-          <div className='rounded-xl bg-orange-50/60 ring-1 ring-orange-100 p-3'>
+          <div className='rounded-xl bg-blue-50/60 ring-1 ring-blue-100 p-3'>
             <span className='font-semibold text-slate-900'>Humidity:</span>{' '}
             {data?.main?.humidity != null ? `${data.main.humidity}%` : '—'}
           </div>

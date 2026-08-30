@@ -55,12 +55,12 @@ export default function Weekly() {
       <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
-            <MapPin size={18} className='text-orange-600' />
+            <MapPin size={18} className='text-[#272745]' />
             <h2 className='text-xl md:text-2xl font-bold text-slate-900'>
               {location.label || 'Weekly forecast'}
             </h2>
           </div>
-          <CalendarDays className='text-orange-600' />
+          <CalendarDays className='text-[#272745]' />
         </div>
 
         <div className='mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>

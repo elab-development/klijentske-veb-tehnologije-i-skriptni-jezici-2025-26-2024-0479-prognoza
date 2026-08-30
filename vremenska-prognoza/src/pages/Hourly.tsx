@@ -20,7 +20,7 @@ export default function Hourly() {
       <div className='max-w-4xl mx-auto'>
         <AlertCard variant='info' title='No location set'>
           Go to{' '}
-          <a href='/' className='text-orange-700 underline'>
+          <a href='/' className='text-blue-700 underline'>
             Home
           </a>{' '}
           and pick a location to see the hourly forecast.
@@ -52,15 +52,15 @@ export default function Hourly() {
 
   return (
     <div className='max-w-5xl mx-auto'>
-      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
+      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
-            <MapPin size={18} className='text-orange-600' />
+            <MapPin size={18} className='text-[#272745]' />
             <h2 className='text-xl md:text-2xl font-bold text-slate-900'>
               {location.label || 'Hourly forecast'}
             </h2>
           </div>
-          <Clock className='text-orange-600' />
+          <Clock className='text-[#272745]' />
         </div>
 
         <div className='mt-6 flex gap-4 overflow-x-auto pb-2'>

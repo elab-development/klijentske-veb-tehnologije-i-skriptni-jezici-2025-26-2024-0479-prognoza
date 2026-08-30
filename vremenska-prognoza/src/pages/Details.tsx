@@ -74,10 +74,10 @@ export default function Details() {
 
   return (
     <div className='max-w-5xl mx-auto'>
-      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
+      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
-            <MapPin size={18} className='text-orange-600' />
+            <MapPin size={18} className='text-[#272745]' />
             <h2 className='text-xl md:text-2xl font-bold text-slate-900'>
               {location.label || 'Details'}
             </h2>
@@ -87,7 +87,7 @@ export default function Details() {
               <img
                 src={icon}
                 alt={cond?.description || 'weather'}
-                className='h-12 w-12 rounded-xl bg-white ring-1 ring-orange-100 p-1'
+                className='h-12 w-12 rounded-xl bg-white ring-1 ring-blue-100 p-1'
                 loading='lazy'
               />
             )}
