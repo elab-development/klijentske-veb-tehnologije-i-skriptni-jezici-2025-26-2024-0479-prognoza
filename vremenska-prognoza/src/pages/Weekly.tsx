@@ -20,10 +20,10 @@ export default function Weekly() {
       <div className='max-w-4xl mx-auto'>
         <AlertCard variant='info' title='No location set'>
           Go to{' '}
-          <a href='/' className='text-orange-700 underline'>
+          <a href='/' className='text-blue-700 underline'>
             Home
           </a>{' '}
-          and pick a location to see the hourly forecast.
+          and pick a location to see the weekly forecast.
         </AlertCard>
       </div>
     );
@@ -40,7 +40,7 @@ export default function Weekly() {
   if (error) {
     return (
       <div className='max-w-4xl mx-auto'>
-        <AlertCard variant='error' title='Couldn’t load hourly forecast'>
+        <AlertCard variant='error' title='Couldn’t load weekly forecast'>
           {error || 'Unknown error'}
         </AlertCard>
       </div>
@@ -52,7 +52,7 @@ export default function Weekly() {
 
   return (
     <div className='max-w-5xl mx-auto'>
-      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 p-6 md:p-8'>
+      <div className='rounded-3xl bg-white shadow-xl ring-1 ring-blue-100 p-6 md:p-8'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2 text-slate-700'>
             <MapPin size={18} className='text-[#272745]' />
