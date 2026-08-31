@@ -92,7 +92,7 @@ export default function Home() {
 
   return (
     <section className='space-y-6'>
-      {/* HERO */}
+      {}
       <div className='relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-50 to-white ring-1 ring-blue-100'>
         <div className='px-6 py-10 md:px-10 md:py-14'>
           <div className='max-w-4xl'>
